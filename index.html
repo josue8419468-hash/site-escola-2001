@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Escola Estadual José de Alencar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #f5f8fc;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background: #073b7a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #f7c600;
+            color: #073b7a;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f7c600;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 650px;
+            background:
+                linear-gradient(120deg, rgba(3, 37, 76, 0.97), rgba(6, 80, 150, 0.88)),
+                radial-gradient(circle at 80% 30%, #1697d4, transparent 35%);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            width: 1200px;
+            max-width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text .tag {
+            display: inline-block;
+            background: #f7c600;
+            color: #073b7a;
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h2 {
+            font-size: clamp(38px, 5vw, 64px);
+            line-height: 1.05;
+            margin-bottom: 25px;
+        }
+
+        .hero-text h2 span {
+            color: #f7c600;
+        }
+
+        .hero-text p {
+            font-size: 19px;
+            max-width: 650px;
+            color: #e5eef9;
+            margin-bottom: 32px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #f7c600;
+            color: #073b7a;
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #073b7a;
+        }
+
+        /* CARD DO EMTI */
+        .emti-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .emti-card .icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: #f7c600;
+            color: #073b7a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            margin-bottom: 22px;
+        }
+
+        .emti-card h3 {
+            font-size: 29px;
+            margin-bottom: 12px;
+        }
+
+        .emti-card p {
+            color: #e4eef9;
+            margin-bottom: 22px;
+        }
+
+       
+
+        /* SEÇÕES */
+        section {
+            padding: 90px 25px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+        }
+        /* SOBRE */
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            border-radius: 10%;
+        }
+
+        .about-image {
+            min-height: 360px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 100px;
+           
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            color: #073b7a;
+            margin-bottom: 18px;
+        }
+
+        .about-text p {
+            color: #5e6877;
+            margin-bottom: 18px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #e4eaf2;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .card-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #073b7a;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #687385;
+        }
+
+        /* EMTI */
+        
+
+        
+
+        /* TÉCNICO */
+        .technical {
+            background: #f5f8fc;
+        }
+
+        .technical-banner {
+            background: linear-gradient(120deg, #0b75c9, #00a7d8);
+            color: white;
+            padding: 45px;
+            border-radius: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .technical-banner h3 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .computer-icon {
+            font-size: 100px;
+        }
+
+
+        /* FOOTER */
+        footer {
+            background: #03294f;
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+        }
+
+        footer strong {
+            color: #f7c600;
+        }
+
+        footer p {
+            margin-top: 8px;
+            color: #b9c9da;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 850px) {
+            nav ul {
+                display: none;
+            }
+            .hero {
+                padding: 70px 0;
+            }
+
+            .technical-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-text h2 {
+                font-size: 40px;
+            }
+
+            
+
+            section {
+                padding: 65px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+                <div class="logo-icon">JA</div>
+
+                <div>
+                    <h1>José de Alencar</h1>
+                    <span>Escola Estadual</span>
+                </div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="galeriadeim.html">Galaria de imagem</a></li>
+                    <li><a href="cursostecnicos.html">Cursos tecnicos</a></li>
+                    <li><a href="historia.html">Historia</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- DESTAQUE PRINCIPAL -->
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div class="hero-text">
+
+                    <span class="tag">EDUCAÇÃO • TECNOLOGIA • FUTURO</span>
+
+                    <h2>
+                        Seu futuro começa
+                        <span>aqui.</span>
+                    </h2>
+
+                    <p>
+                        Bem-vindo à Escola Estadual José de Alencar.
+                        Uma escola que une educação de qualidade, formação
+                        integral e tecnologia para preparar nossos estudantes
+                        para os desafios do futuro.
+                    </p>
+
+                    
+        </section>
+
+
+        <!-- SOBRE A ESCOLA -->
+        <section class="about" id="escola">
+
+            <div class="container">
+
+                <div class="section-title">
+                    <span>Conheça nossa escola</span>
+                    <h2>Escola Estadual José de Alencar</h2>
+
+                    <p>
+                        Um espaço de aprendizagem, convivência, inovação
+                        e desenvolvimento para nossos estudantes.
+                    </p>
+                </div>
+
+
+                <div class="about-grid">
+
+                    <div class="about-image">
+                        <img src="foto.png" width="475" height="430"  >
+                    </div>
+
+                    <div class="about-text">
+
+                        <h3>
+                            Educação para transformar
+                            vidas
+                        </h3>
+
+                        <p>
+                            A Escola Estadual José de Alencar tem como
+                            compromisso oferecer uma educação que valoriza
+                            o conhecimento, a cidadania, a criatividade e
+                            o desenvolvimento integral dos estudantes.
+                        </p>
+
+                        <p>
+                            Nossa proposta pedagógica busca preparar os
+                            jovens não apenas para os próximos desafios
+                            acadêmicos, mas também para o mundo do trabalho
+                            e para uma sociedade cada vez mais conectada.
+                        </p>
+
+                        <p>
+                            Por meio do Ensino Médio em Tempo Integral,
+                            nossos alunos contam com uma jornada ampliada
+                            de aprendizagem e novas possibilidades de
+                            formação.
+                        </p>
+
+                    </div>
+
+                </div>
+
+        </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <strong>Escola Estadual José de Alencar</strong>
+
+        <p>
+            Ensino Médio em Tempo Integral • Técnico em Informática
+        </p>
+
+        <p>
+            © 2026 Escola Estadual José de Alencar. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+</body>
+</html>

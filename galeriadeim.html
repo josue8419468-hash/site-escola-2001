@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galeria de Imagens | Escola Estadual José de Alencar</title>
+
+    <style>
+
+        /* ========================================================
+           VARIÁVEIS
+           ======================================================== */
+
+        :root {
+            --primary-color: #073b7a;
+            --primary-light: #0750b0;
+            --secondary-color: #f7c600;
+            --dark-color: #172033;
+            --light-color: #f5f8fc;
+            --gray-color: #637083;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+            --transition-speed: 0.3s;
+        }
+
+
+        /* ========================================================
+           RESET
+           ======================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+
+        /* ========================================================
+           HEADER
+           ======================================================== */
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: var(--transition-speed);
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+
+        /* ========================================================
+           HERO / INTRODUÇÃO
+           ======================================================== */
+
+        .gallery-hero {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(7, 59, 122, 0.97),
+                    rgba(0, 45, 94, 0.97)
+                );
+
+            color: white;
+
+            text-align: center;
+
+            padding: 70px 20px;
+        }
+
+        .gallery-hero h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .gallery-hero p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .hero-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+
+        /* ========================================================
+           CONTAINER
+           ======================================================== */
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        /* ========================================================
+           TÍTULO DA SEÇÃO
+           ======================================================== */
+
+        .section-title {
+            text-align: center;
+            margin: 45px 0 25px;
+        }
+
+        .section-title h2 {
+            color: var(--primary-color);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: var(--gray-color);
+        }
+
+
+        /* ========================================================
+           FILTROS
+           ======================================================== */
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-bottom: 35px;
+        }
+
+        .filter-btn {
+            background-color: white;
+
+            border: 2px solid var(--primary-color);
+
+            color: var(--primary-color);
+
+            padding: 9px 20px;
+
+            border-radius: 25px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            transition: all var(--transition-speed);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* ========================================================
+           GALERIA
+           ======================================================== */
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 25px;
+
+            padding-bottom: 60px;
+        }
+
+
+        /* ========================================================
+           CARD DA IMAGEM
+           ======================================================== */
+
+        .gallery-item {
+
+            background-color: white;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            box-shadow: var(--shadow);
+
+            position: relative;
+
+            transition:
+                transform var(--transition-speed),
+                box-shadow var(--transition-speed);
+
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 10px 22px rgba(0, 0, 0, 0.16);
+        }
+
+
+        /* ========================================================
+           IMAGEM
+           ======================================================== */
+
+        .image-container {
+
+            height: 230px;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .gallery-item img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+
+            transition:
+                transform var(--transition-speed);
+        }
+
+        .gallery-item:hover img {
+
+            transform: scale(1.08);
+        }
+
+
+        /* ========================================================
+           SOBREPOSIÇÃO DA IMAGEM
+           ======================================================== */
+
+        .image-overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                rgba(7, 59, 122, 0.55);
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            opacity: 0;
+
+            transition:
+                opacity var(--transition-speed);
+        }
+
+        .gallery-item:hover .image-overlay {
+
+            opacity: 1;
+        }
+
+        .view-icon {
+
+            width: 55px;
+            height: 55px;
+
+            border-radius: 50%;
+
+            background-color: var(--secondary-color);
+
+            color: var(--primary-color);
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            font-size: 25px;
+
+            font-weight: bold;
+        }
+
+
+        /* ========================================================
+           INFORMAÇÕES
+           ======================================================== */
+
+        .item-info {
+
+            padding: 20px;
+        }
+
+        .item-tag {
+
+            display: inline-block;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            background-color: #e8f0fe;
+
+            color: var(--primary-color);
+
+            padding: 5px 10px;
+
+            border-radius: 5px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .item-info h3 {
+
+            font-size: 19px;
+
+            margin-bottom: 5px;
+
+            color: var(--dark-color);
+        }
+
+        .item-info p {
+
+            font-size: 14px;
+
+            color: var(--gray-color);
+        }
+
+
+        /* ========================================================
+           MODAL
+           ======================================================== */
+
+        .modal {
+
+            display: none;
+
+            position: fixed;
+
+            z-index: 3000;
+
+            inset: 0;
+
+            background-color:
+                rgba(0, 0, 0, 0.88);
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 30px;
+        }
+
+        .modal.active {
+
+            display: flex;
+        }
+
+        .modal-content {
+
+            max-width: 1000px;
+
+            width: 100%;
+
+            position: relative;
+
+            text-align: center;
+        }
+
+        .modal-image {
+
+            max-width: 100%;
+
+            max-height: 75vh;
+
+            object-fit: contain;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-caption {
+
+            color: white;
+
+            margin-top: 15px;
+
+            font-size: 16px;
+        }
+
+
+        /* ========================================================
+           BOTÃO FECHAR
+           ======================================================== */
+
+        .close-modal {
+
+            position: absolute;
+
+            top: -45px;
+
+            right: 0;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: var(--secondary-color);
+
+            color: var(--primary-color);
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* ========================================================
+           BOTÕES ANTERIOR / PRÓXIMO
+           ======================================================== */
+
+        .modal-prev,
+        .modal-next {
+
+            position: fixed;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            width: 50px;
+            height: 50px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background-color: var(--secondary-color);
+
+            color: var(--primary-color);
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: var(--transition-speed);
+        }
+
+        .modal-prev {
+
+            left: 25px;
+        }
+
+        .modal-next {
+
+            right: 25px;
+        }
+
+        .modal-prev:hover,
+        .modal-next:hover,
+        .close-modal:hover {
+
+            background-color: white;
+
+            transform:
+                translateY(-50%)
+                scale(1.05);
+        }
+
+
+        /* ========================================================
+           SEÇÃO FINAL
+           ======================================================== */
+
+        .gallery-info {
+
+            background-color: white;
+
+            padding: 40px;
+
+            margin-bottom: 60px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-info h2 {
+
+            color: var(--primary-color);
+
+            margin-bottom: 10px;
+        }
+
+        .gallery-info p {
+
+            color: var(--gray-color);
+
+            max-width: 750px;
+
+            margin: auto;
+        }
+
+
+        /* ========================================================
+           RODAPÉ
+           ======================================================== */
+
+        footer {
+
+            background-color: var(--dark-color);
+
+            color: white;
+
+            padding: 40px 20px;
+
+            text-align: center;
+        }
+
+        footer h3 {
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+
+            opacity: 0.7;
+
+            font-size: 14px;
+
+            margin: 5px;
+        }
+
+
+        /* ========================================================
+           RESPONSIVIDADE
+           ======================================================== */
+
+        @media (max-width: 768px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+            }
+
+            .gallery-hero h2 {
+
+                font-size: 32px;
+            }
+
+            .gallery-hero p {
+
+                font-size: 16px;
+            }
+
+            nav ul {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .gallery-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .modal-prev {
+
+                left: 10px;
+            }
+
+            .modal-next {
+
+                right: 10px;
+            }
+        }
+
+
+        @media (max-width: 500px) {
+
+            .logo {
+
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .gallery-hero {
+
+                padding: 50px 15px;
+            }
+
+            .gallery-hero h2 {
+
+                font-size: 27px;
+            }
+
+            .image-container {
+
+                height: 220px;
+            }
+
+            .modal {
+
+                padding: 15px;
+            }
+
+            .modal-prev,
+            .modal-next {
+
+                width: 42px;
+                height: 42px;
+
+                font-size: 20px;
+            }
+
+            .close-modal {
+
+                top: -50px;
+            }
+        }
+
+
+        /* ========================================================
+           ANIMAÇÃO DO FILTRO
+           ======================================================== */
+
+        .gallery-item.hidden {
+
+            display: none;
+        }
+
+        .gallery-item.show {
+
+            animation: aparecer 0.4s ease;
+        }
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================================
+         CABEÇALHO
+         ======================================================== -->
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    JA
+                </div>
+
+                <div>
+
+                    <h1>
+                        Escola Estadual José de Alencar
+                    </h1>
+
+                    <span>
+                        Educação, Formação e Oportunidades
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <nav>
+
+                <ul>
+
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cursostecnicos.html">
+                            Cursos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="historia.html">
+                            História
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contato.html">
+                            Contato
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================================
+         HERO
+         ======================================================== -->
+
+    <section class="gallery-hero">
+
+        <div class="hero-icon">
+            📸
+        </div>
+
+        <h2>
+            Galeria de Imagens
+        </h2>
+
+        <p>
+            Conheça um pouco mais da Escola Estadual José de Alencar
+            através de nossos espaços, atividades, projetos e momentos
+            especiais.
+        </p>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         CONTEÚDO
+         ======================================================== -->
+
+    <main class="container">
+
+
+        <div class="section-title">
+
+            <h2>
+                Momentos da Nossa Escola
+            </h2>
+
+            <p>
+                Explore os diferentes ambientes e experiências
+                que fazem parte da nossa comunidade escolar.
+            </p>
+
+        </div>
+
+
+
+        <!-- ====================================================
+             FILTROS
+             ==================================================== -->
+
+        <div class="filters">
+
+            <button
+                class="filter-btn active"
+                onclick="filtrarGaleria('todos', this)">
+
+                Todos
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('ambientes', this)">
+
+                Ambientes
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('tecnologia', this)">
+
+                Tecnologia
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('aulas', this)">
+
+                Aulas
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('gestao', this)">
+
+                Gestão
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('eventos', this)">
+
+                Eventos
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                onclick="filtrarGaleria('projetos', this)">
+
+                Projetos
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ====================================================
+             GALERIA
+             ==================================================== -->
+
+        <div class="gallery-grid" id="gallery">
+
+
+            <!-- FOTO 1 -->
+
+            <div
+                class="gallery-item show"
+                data-category="tecnologia"
+                data-index="0">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/informatica.jpg"
+                        alt="Sala de informática da escola">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Tecnologia
+                    </span>
+
+                    <h3>
+                        Sala de Informática
+                    </h3>
+
+                    <p>
+                        Espaço destinado às atividades do curso técnico
+                        em informática e ao desenvolvimento de habilidades
+                        tecnológicas.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 2 -->
+
+            <div
+                class="gallery-item show"
+                data-category="aulas"
+                data-index="1">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/aula.jpg"
+                        alt="Sala de aula da escola">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Aulas
+                    </span>
+
+                    <h3>
+                        Sala de Aula
+                    </h3>
+
+                    <p>
+                        Ambiente destinado ao aprendizado, interação
+                        e desenvolvimento dos estudantes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 3 -->
+
+            <div
+                class="gallery-item show"
+                data-category="gestao"
+                data-index="2">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/diretor.jpg"
+                        alt="Sala da direção">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Gestão
+                    </span>
+
+                    <h3>
+                        Direção da Escola
+                    </h3>
+
+                    <p>
+                        Espaço destinado à direção e à organização
+                        administrativa da escola.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 4 -->
+
+            <div
+                class="gallery-item show"
+                data-category="ambientes"
+                data-index="3">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/refeitorio.jpg"
+                        alt="Refeitório da escola">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Ambientes
+                    </span>
+
+                    <h3>
+                        Refeitório
+                    </h3>
+
+                    <p>
+                        Espaço de convivência destinado aos momentos
+                        de alimentação dos estudantes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 5 -->
+
+            <div
+                class="gallery-item show"
+                data-category="ambientes"
+                data-index="4">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/bib.jpg"
+                        alt="Biblioteca da escola">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Ambientes
+                    </span>
+
+                    <h3>
+                        Biblioteca
+                    </h3>
+
+                    <p>
+                        Espaço dedicado à leitura, pesquisa e ampliação
+                        dos conhecimentos dos estudantes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 6 -->
+
+            <div
+                class="gallery-item show"
+                data-category="projetos"
+                data-index="5">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/projeto.jpg"
+                        alt="Projeto escolar">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Projetos
+                    </span>
+
+                    <h3>
+                        Projetos Escolares
+                    </h3>
+
+                    <p>
+                        Atividades desenvolvidas pelos estudantes
+                        durante projetos e ações da escola.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 7 -->
+
+            <div
+                class="gallery-item show"
+                data-category="eventos"
+                data-index="6">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/evento.jpg"
+                        alt="Evento escolar">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Eventos
+                    </span>
+
+                    <h3>
+                        Eventos da Escola
+                    </h3>
+
+                    <p>
+                        Registros de eventos, atividades e momentos
+                        especiais da comunidade escolar.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FOTO 8 -->
+
+            <div
+                class="gallery-item show"
+                data-category="aulas"
+                data-index="7">
+
+                <div class="image-container">
+
+                    <img
+                        src="img/atividade.jpg"
+                        alt="Atividade escolar">
+
+                    <div class="image-overlay">
+
+                        <div class="view-icon">
+                            🔍
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="item-info">
+
+                    <span class="item-tag">
+                        Aulas
+                    </span>
+
+                    <h3>
+                        Atividades Educacionais
+                    </h3>
+
+                    <p>
+                        Momentos de aprendizagem e participação
+                        dos alunos nas atividades escolares.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ====================================================
+             INFORMAÇÃO FINAL
+             ==================================================== -->
+
+        <section class="gallery-info">
+
+            <h2>
+                Nossa escola em imagens
+            </h2>
+
+            <p>
+                Cada espaço e cada atividade representam uma parte
+                da história da Escola Estadual José de Alencar.
+                Esta galeria apresenta alguns dos ambientes,
+                projetos e momentos vivenciados por nossa comunidade
+                escolar.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================================================
+         MODAL DE IMAGEM
+         ======================================================== -->
+
+    <div
+        class="modal"
+        id="imageModal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+                aria-label="Fechar">
+
+                ×
+
+            </button>
+
+
+            <img
+                class="modal-image"
+                id="modalImage"
+                src=""
+                alt="">
+
+
+            <div
+                class="modal-caption"
+                id="modalCaption">
+            </div>
+
+        </div>
+
+
+        <button
+            class="modal-prev"
+            id="prevButton"
+            aria-label="Imagem anterior">
+
+            ‹
+
+        </button>
+
+
+        <button
+            class="modal-next"
+            id="nextButton"
+            aria-label="Próxima imagem">
+
+            ›
+
+        </button>
+
+    </div>
+
+
+
+    <!-- ========================================================
+         RODAPÉ
+         ======================================================== -->
+
+    <footer>
+
+        <h3>
+            Escola Estadual José de Alencar
+        </h3>
+
+        <p>
+            Educação, conhecimento e oportunidades para todos.
+        </p>
+
+        <p>
+            © 2026 Escola Estadual José de Alencar.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ========================================================
+         JAVASCRIPT
+         ======================================================== -->
+
+    <script>
+
+        /* ======================================================
+           FILTRO DA GALERIA
+           ====================================================== */
+
+        function filtrarGaleria(categoria, botao) {
+
+            const itens =
+                document.querySelectorAll('.gallery-item');
+
+            const botoes =
+                document.querySelectorAll('.filter-btn');
+
+
+            botoes.forEach(function(btn) {
+
+                btn.classList.remove('active');
+
+            });
+
+
+            botao.classList.add('active');
+
+
+            itens.forEach(function(item) {
+
+                const categoriaItem =
+                    item.getAttribute('data-category');
+
+
+                if (
+                    categoria === 'todos' ||
+                    categoriaItem === categoria
+                ) {
+
+                    item.classList.remove('hidden');
+
+                    item.classList.add('show');
+
+                } else {
+
+                    item.classList.remove('show');
+
+                    item.classList.add('hidden');
+
+                }
+
+            });
+
+        }
+
+
+
+        /* ======================================================
+           MODAL
+           ====================================================== */
+
+        const modal =
+            document.getElementById('imageModal');
+
+        const modalImage =
+            document.getElementById('modalImage');
+
+        const modalCaption =
+            document.getElementById('modalCaption');
+
+        const closeModal =
+            document.getElementById('closeModal');
+
+        const prevButton =
+            document.getElementById('prevButton');
+
+        const nextButton =
+            document.getElementById('nextButton');
+
+
+        const imagens =
+            document.querySelectorAll('.gallery-item img');
+
+
+        let imagemAtual = 0;
+
+
+
+        /* ======================================================
+           ABRIR IMAGEM
+           ====================================================== */
+
+        imagens.forEach(function(img, index) {
+
+            img.parentElement.parentElement
+                .addEventListener('click', function() {
+
+                    imagemAtual = index;
+
+                    abrirImagem(imagemAtual);
+
+                });
+
+        });
+
+
+
+        function abrirImagem(index) {
+
+            const imagem =
+                imagens[index];
+
+            const card =
+                imagem.closest('.gallery-item');
+
+            const titulo =
+                card.querySelector('h3').textContent;
+
+            const descricao =
+                card.querySelector('p').textContent;
+
+
+            modalImage.src =
+                imagem.src;
+
+            modalImage.alt =
+                imagem.alt;
+
+
+            modalCaption.innerHTML =
+                `<strong>${titulo}</strong><br>${descricao}`;
+
+
+            modal.classList.add('active');
+
+            document.body.style.overflow = 'hidden';
+
+        }
+
+
+
+        /* ======================================================
+           FECHAR MODAL
+           ====================================================== */
+
+        function fecharModal() {
+
+            modal.classList.remove('active');
+
+            document.body.style.overflow = 'auto';
+
+        }
+
+
+        closeModal.addEventListener(
+            'click',
+            fecharModal
+        );
+
+
+
+        /* ======================================================
+           IMAGEM ANTERIOR
+           ====================================================== */
+
+        prevButton.addEventListener(
+            'click',
+            function(event) {
+
+                event.stopPropagation();
+
+                imagemAtual--;
+
+                if (imagemAtual < 0) {
+
+                    imagemAtual =
+                        imagens.length - 1;
+
+                }
+
+                abrirImagem(imagemAtual);
+
+            }
+        );
+
+
+
+        /* ======================================================
+           PRÓXIMA IMAGEM
+           ====================================================== */
+
+        nextButton.addEventListener(
+            'click',
+            function(event) {
+
+                event.stopPropagation();
+
+                imagemAtual++;
+
+                if (
+                    imagemAtual >=
+                    imagens.length
+                ) {
+
+                    imagemAtual = 0;
+
+                }
+
+                abrirImagem(imagemAtual);
+
+            }
+        );
+
+
+
+        /* ======================================================
+           FECHAR CLICANDO FORA
+           ====================================================== */
+
+        modal.addEventListener(
+            'click',
+            function(event) {
+
+                if (
+                    event.target === modal
+                ) {
+
+                    fecharModal();
+
+                }
+
+            }
+        );
+
+
+
+        /* ======================================================
+           TECLADO
+           ====================================================== */
+
+        document.addEventListener(
+            'keydown',
+            function(event) {
+
+                if (
+                    !modal.classList.contains('active')
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    event.key === 'Escape'
+                ) {
+
+                    fecharModal();
+
+                }
+
+
+                if (
+                    event.key === 'ArrowLeft'
+                ) {
+
+                    imagemAtual--;
+
+                    if (imagemAtual < 0) {
+
+                        imagemAtual =
+                            imagens.length - 1;
+
+                    }
+
+                    abrirImagem(imagemAtual);
+
+                }
+
+
+                if (
+                    event.key === 'ArrowRight'
+                ) {
+
+                    imagemAtual++;
+
+                    if (
+                        imagemAtual >=
+                        imagens.length
+                    ) {
+
+                        imagemAtual = 0;
+
+                    }
+
+                    abrirImagem(imagemAtual);
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

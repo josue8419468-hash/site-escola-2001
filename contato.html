@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contato | Escola Estadual José de Alencar</title>
+
+    <style>
+        /* ==============================
+           RESET
+        ============================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #172033;
+            background: #f5f8fc;
+            line-height: 1.6;
+        }
+
+
+        /* ==============================
+           CABEÇALHO - IGUAL AO PRIMEIRO
+        ============================== */
+
+        header {
+            background: #073b7a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #f7c600;
+            color: #073b7a;
+            border-radius: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .logo span {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f7c600;
+        }
+
+
+        /* ==============================
+           CONTEÚDO
+        ============================== */
+
+        .main-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+
+        /* ==============================
+           CABEÇALHO DA PÁGINA
+        ============================== */
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h2 {
+            color: #073b7a;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: #637083;
+            font-size: 17px;
+        }
+
+
+        /* ==============================
+           GRID DE CONTATO
+        ============================== */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 30px;
+        }
+
+
+        /* ==============================
+           CARTÃO DE INFORMAÇÕES
+        ============================== */
+
+        .info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            border-left: 6px solid #073b7a;
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.05);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: #073b7a;
+            margin-bottom: 25px;
+
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 10px;
+        }
+
+
+        /* ==============================
+           ITENS DE CONTATO
+        ============================== */
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: #073b7a;
+            background: #e1e8ed;
+            padding: 12px;
+            border-radius: 50%;
+
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+        .item-details h3 {
+            font-size: 1rem;
+            color: #172033;
+            margin-bottom: 3px;
+        }
+
+        .item-details p,
+        .item-details a {
+            font-size: 0.95rem;
+            color: #637083;
+            text-decoration: none;
+        }
+
+        .item-details a:hover {
+            color: #073b7a;
+            text-decoration: underline;
+        }
+
+
+        /* ==============================
+           HORÁRIOS
+        ============================== */
+
+        .hours-box {
+            margin-top: 30px;
+            background: #f8fafd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+        }
+
+        .hours-box h4 {
+            color: #073b7a;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hours-list {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #637083;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px dashed #e1e8ed;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+
+        /* ==============================
+           FORMULÁRIO
+        ============================== */
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            border-top: 6px solid #f7c600;
+            box-shadow: 0 8px 24px rgba(13, 71, 161, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #172033;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+
+            border: 2px solid #cfd8dc;
+            border-radius: 6px;
+
+            font-size: 0.95rem;
+            color: #172033;
+
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #073b7a;
+            box-shadow: 0 0 0 4px rgba(7, 59, 122, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background-color: #f7c600;
+            color: #073b7a;
+
+            border: none;
+            padding: 14px 28px;
+
+            font-size: 1rem;
+            font-weight: bold;
+
+            border-radius: 6px;
+            cursor: pointer;
+
+            width: 100%;
+
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #073b7a;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        /* ==============================
+           RODAPÉ
+        ============================== */
+
+        footer {
+            background: #03294f;
+            color: white;
+            padding: 35px 25px;
+            text-align: center;
+        }
+
+        footer strong {
+            color: #f7c600;
+        }
+
+        footer p {
+            margin-top: 8px;
+            color: #b9c9da;
+            font-size: 14px;
+        }
+
+
+        /* ==============================
+           RESPONSIVO
+        ============================== */
+
+        @media (max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-container {
+                padding: 60px 20px;
+            }
+
+            .page-header h2 {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .logo span {
+                font-size: 11px;
+            }
+
+            .info-card,
+            .form-card {
+                padding: 25px;
+            }
+
+            .page-header h2 {
+                font-size: 28px;
+            }
+
+            .hours-list li {
+                flex-direction: column;
+                gap: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- ==================================
+         CABEÇALHO IGUAL AO PRIMEIRO CÓDIGO
+    =================================== -->
+
+    <header>
+
+        <div class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    JA
+                </div>
+
+                <div>
+                    <h1>José de Alencar</h1>
+                    <span>Escola Estadual</span>
+                </div>
+
+            </div>
+
+
+            <nav>
+
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="galeriadeim.html">
+                            Galeria de imagens
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cursostecnicos.html">
+                            Cursos técnicos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="historia.html">
+                            História
+                        </a>
+                    </li>
+
+                    
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================
+         CONTEÚDO DA PÁGINA
+    =================================== -->
+
+    <main>
+
+        <div class="main-container">
+
+
+            <div class="page-header">
+
+                <h2>
+                    Contato da Escola José de Alencar
+                </h2>
+
+                <p>
+                    Fale com a nossa equipe administrativa e pedagógica
+                </p>
+
+            </div>
+
+
+            <div class="contact-grid">
+
+
+                <!-- INFORMAÇÕES DE CONTATO -->
+
+                <section class="info-card">
+
+                    <h2 class="card-title">
+                        Canais de Atendimento
+                    </h2>
+
+
+                    <!-- ENDEREÇO -->
+
+                    <div class="contact-item">
+
+                        <i>📍</i>
+
+                        <div class="item-details">
+
+                            <h3>
+                                Endereço Completo
+                            </h3>
+
+                            <p>
+                                Rua Belarmino Dias dos Santos, Nº 90 – Centro<br>
+                                Machacalis – MG<br>
+                                CEP: 39873-000
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TELEFONE -->
+
+                    <div class="contact-item">
+
+                        <i>📞</i>
+
+                        <div class="item-details">
+
+                            <h3>
+                                Telefone da Secretaria
+                            </h3>
+
+                            <p>
+                                <a href="tel:+553336271285">
+                                    (33) 3627-1285
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- E-MAIL -->
+
+                    <div class="contact-item">
+
+                        <i>✉️</i>
+
+                        <div class="item-details">
+
+                            <h3>
+                                E-mail Institucional
+                            </h3>
+
+                            <p>
+                                <a href="mailto:escola.147133.secretaria@educacao.mg.gov.br">
+                                    escola.147133.secretaria@educacao.mg.gov.br
+                                </a>
+                            </p>
+
+                            <p>
+                                <a href="mailto:escola.147133@educacao.mg.gov.br">
+                                    escola.147133@educacao.mg.gov.br
+                                </a>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- HORÁRIOS -->
+
+                    <div class="hours-box">
+
+                        <h4>
+                            🕐 Horário de Funcionamento
+                        </h4>
+
+                        <ul class="hours-list">
+
+                            <li>
+                                <span>Segunda a Quinta:</span>
+                                <span>07:00 às 22:00</span>
+                            </li>
+
+                            <li>
+                                <span>Sexta-feira:</span>
+                                <span>07:00 às 22:00</span>
+                            </li>
+
+                            <li>
+                                <span>Sábado e Domingo:</span>
+                                <span style="color: #c62828; font-weight: 600;">
+                                    Fechado
+                                </span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </section>
+
+
+                <!-- FORMULÁRIO DE CONTATO -->
+
+                <section class="form-card">
+
+                    <h2 class="card-title">
+                        Envie uma mensagem
+                    </h2>
+
+
+                    <form>
+
+                        <div class="form-group">
+
+                            <label for="nome">
+                                Nome
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nome"
+                                class="form-control"
+                                placeholder="Digite seu nome"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                E-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-control"
+                                placeholder="Digite seu e-mail"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="assunto">
+                                Assunto
+                            </label>
+
+                            <input
+                                type="text"
+                                id="assunto"
+                                class="form-control"
+                                placeholder="Digite o assunto"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="mensagem">
+                                Mensagem
+                            </label>
+
+                            <textarea
+                                id="mensagem"
+                                class="form-control"
+                                placeholder="Digite sua mensagem"
+                            ></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn-submit"
+                        >
+                            Enviar mensagem
+                        </button>
+
+                    </form>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ==================================
+         RODAPÉ
+    =================================== -->
+
+    <footer>
+
+        <strong>
+            Escola Estadual José de Alencar
+        </strong>
+
+        <p>
+            Ensino Médio em Tempo Integral • Técnico em Informática
+        </p>
+
+        <p>
+            © 2026 Escola Estadual José de Alencar. Todos os direitos reservados.
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

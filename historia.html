@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>História - Escola José de Alencar</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #333333;
+            background-color: #ffffff;
+        }
+
+        /* =========================
+           CABEÇALHO IGUAL À PÁGINA PRINCIPAL
+           ========================= */
+
+        header {
+            background: #073b7a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: #f7c600;
+            color: #073b7a;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .logo span {
+            font-size: 12px;
+            opacity: 0.8;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #f7c600;
+        }
+
+        /* =========================
+           CONTEÚDO
+           ========================= */
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .bg-light {
+            background-color: #f4f6f9;
+        }
+
+        .text-center {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* BANNER PRINCIPAL */
+
+        .hero {
+            background-color: rgb(248, 248, 248);
+            color: #073b7a;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* LAYOUT EM GRID */
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .grid-2 h2 {
+            font-size: 2rem;
+            color: #073b7a;
+            margin-bottom: 20px;
+        }
+
+        .grid-2 p {
+            margin-bottom: 15px;
+        }
+
+        /* IMAGENS */
+
+        .image-placeholder {
+            background-color: #e2e8f0;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            border: 2px dashed #cbd5e1;
+        }
+
+        .placeholder-text {
+            color: #64748b;
+            font-weight: bold;
+        }
+
+        /* LINHA DO TEMPO */
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            border-left: 4px solid #073b7a;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            background-color: #ffffff;
+            border: 4px solid #073b7a;
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #073b7a;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* RODAPÉ */
+
+        .footer {
+            background-color: #03294f;
+            color: #ffffff;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 0.9rem;
+        }
+
+        .footer p {
+            margin-bottom: 5px;
+        }
+
+        /* RESPONSIVIDADE */
+
+        @media (max-width: 850px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .navbar {
+                padding: 18px;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .logo h1 {
+                font-size: 17px;
+            }
+
+            .logo-icon {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+
+            .section {
+                padding: 50px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    JA
+                </div>
+
+                <div>
+                    <h1>José de Alencar</h1>
+                    <span>Escola Estadual</span>
+                </div>
+
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                   <li><a href="galeriadeim.html">Galeria de Imagem</a></li>
+                    <li><a href="cursostecnicos.html">Cursos Tecnicos</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- BANNER PRINCIPAL -->
+
+    <section id="inicio" class="hero">
+
+        <div class="container">
+
+            <h1>
+                Nossa História, Nosso Orgulho
+            </h1>
+
+            <p>
+                Conheça a trajetória da Escola José de Alencar,
+                moldando o futuro de gerações desde a sua fundação.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEÇÃO DE INTRODUÇÃO E ORIGEM -->
+
+    <section id="origem" class="section">
+
+        <div class="container grid-2">
+
+            <div>
+
+                <h2>
+                    Como Tudo Começou
+                </h2>
+
+                <p>
+                    A Escola José de Alencar nasceu do sonho de uma
+                    comunidade que acreditava no poder transformador
+                    da educação. Fundada com salas modestas e poucos
+                    recursos, a instituição cresceu impulsionada pela
+                    dedicação de professores pioneiros e pelo esforço
+                    das famílias locais.
+                </p>
+
+                <p>
+                    Ao longo das décadas, o colégio expandiu sua
+                    estrutura física e pedagógica, tornando-se uma
+                    referência regional no ensino básico e na formação
+                    cidadã.
+                </p>
+
+            </div>
+
+            <div class="image-placeholder">
+
+                <div class="placeholder-text">
+                    Foto Antiga da Escola
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LINHA DO TEMPO -->
+
+    <section id="linha-do-tempo" class="section bg-light">
+
+        <div class="container">
+
+            <h2 class="text-center">
+                Marcos Históricos
+            </h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <div class="timeline-date">
+                        Ano de Fundação
+                    </div>
+
+                    <p>
+                        Inauguração do primeiro pavilhão da escola
+                        e recepção da primeira turma de estudantes.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-date">
+                        Anos 90
+                    </div>
+
+                    <p>
+                        Ampliação do espaço físico com a construção
+                        da biblioteca municipal integrada e do
+                        laboratório de ciências.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-date">
+                        Anos 2000
+                    </div>
+
+                    <p>
+                        Implementação dos primeiros laboratórios
+                        de informática e projetos de inclusão digital.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-date">
+                        Dias Atuais
+                    </div>
+
+                    <p>
+                        Consolidação como escola de referência,
+                        com foco em tecnologia, sustentabilidade
+                        e inovação pedagógica.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- O PATRONO -->
+
+    <section id="patrono" class="section">
+
+        <div class="container grid-2">
+            <div class="image-placeholder">
+
+                <div class="placeholder-text">
+                    Retrato de José de Alencar
+                </div>
+
+            </div>
+
+            <div>
+
+                <h2>
+                    Quem foi José de Alencar?
+                </h2>
+
+                <p>
+                    Nossa escola carrega com orgulho o nome de um
+                    dos maiores escritores da literatura brasileira.
+                    José de Alencar (1829–1877) foi romancista,
+                    dramaturgo, jornalista e político.
+                </p>
+
+                <p>
+                    Famoso por obras primas como
+                    <em>"Iracema"</em> e <em>"O Guarani"</em>,
+                    ele foi um dos principais expoentes do
+                    Romantismo no Brasil. Sua busca por construir
+                    uma identidade genuinamente nacional serve de
+                    inspiração diária para o nosso projeto pedagógico.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                &copy; 2026 Escola José de Alencar.
+                Todos os direitos reservados.
+            </p>
+
+            <p>
+                Educando para o presente e para o futuro.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
+```
